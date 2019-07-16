@@ -1,35 +1,29 @@
-const rows = 40;
+import getStarterGrid from "js/generateGrid.js";
+
+const rows = 100;
 const columns = rows;
 
 export const initialState = {
   rows,
   columns,
-  grid: getBlankGrid(rows, columns),
-  time: 10
+  grid: getStarterGrid(rows, columns, true),
+  generation: 0,
+  time: 10,
+  changes: {}
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "UPDATE_GRID":
-      return { ...state, grid: action.payload };
+    case "FINISH_CYCLE":
+      return {
+        ...state,
+        grid: action.grid,
+        generation: state.generation + 1,
+        changes: action.changes
+      };
     case "UPDATE_SIZE":
       return { ...state, [action.key]: action.payload };
     default:
       return state;
   }
 };
-
-function getBlankGrid(rows, columns) {
-  const grid = [];
-  for (let i = 0; i < columns; i++) {
-    const row = [];
-    for (let j = 0; j < rows; j++) {
-      row.push(Math.random() > 0.9);
-      //   row.push(
-      //     (i === 2 && j === 5) || (i === 3 && j === 5) || (i === 4 && j === 5)
-      //   );
-    }
-    grid.push(row);
-  }
-  return grid;
-}
