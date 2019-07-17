@@ -22,7 +22,11 @@ export const reducer = (state, action) => {
         changes: action.changes
       };
     case "UPDATE_SIZE":
-      return { ...state, [action.key]: action.payload };
+      return {
+        ...state,
+        rows: action.payload.rows || state.rows,
+        columns: action.payload.columns || state.columns
+      };
     default:
       return state;
   }
