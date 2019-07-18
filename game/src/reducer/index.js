@@ -1,7 +1,7 @@
 import getStarterGrid from "js/generateGrid.js";
 
-const rows = 100;
-const columns = rows;
+const rows = 40;
+const columns = 50;
 
 export const initialState = {
   rows,
@@ -9,7 +9,9 @@ export const initialState = {
   grid: getStarterGrid(rows, columns, true),
   generation: 0,
   time: 10,
-  changes: {}
+  changes: {},
+  isRunning: false,
+  width: window.innerWidth
 };
 
 export const reducer = (state, action) => {
@@ -21,11 +23,41 @@ export const reducer = (state, action) => {
         generation: state.generation + 1,
         changes: action.changes
       };
-    case "UPDATE_SIZE":
+    case "RESIZE":
       return {
         ...state,
-        rows: action.payload.rows || state.rows,
-        columns: action.payload.columns || state.columns
+        width: window.innerWidth
+      };
+    case "FORM_SUBMIT":
+      const rows =
+        action.payload.rows > 0 && action.payload.rows < 101
+          ? action.payload.rows
+          : 50;
+      const columns =
+        action.payload.columns > 0 && action.payload.columns < 101
+          ? action.payload.columns
+          : 50;
+      const time = state.time > 0 ? action.payload.time : 100;
+      return {
+        ...state,
+        rows,
+        columns,
+        time,
+        grid: getStarterGrid(rows, columns, true),
+        changes: {},
+        generation: 0
+      };
+    case "TOGGLE_RUN":
+      return {
+        ...state,
+        isRunning: !state.isRunning
+      };
+    case "RESEED":
+      return {
+        ...state,
+        grid: getStarterGrid(state.rows, state.columns, true),
+        changes: {},
+        generation: 0
       };
     default:
       return state;

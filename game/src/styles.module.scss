@@ -1,18 +1,125 @@
+$primary: #313975;
+$light: #535a92;
+$lighter: #7d83b0;
+$dark: #181f58;
+$darker: #080e3b;
+$white: rgb(243, 234, 234);
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+$font: "Open Sans", sans-serif;
+* {
+  font-size: 62.5%;
+  color: $white;
+  font-family: $font;
+}
+
+body {
+  background-color: $primary;
+  padding: 10px 15px;
+}
+
 .row {
   display: flex;
 }
 
+.buttonGroup {
+  margin: 20px 0 5px;
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  button:first-child {
+    margin-right: 25%;
+  }
+}
+
+button {
+  font-size: 1.9rem;
+  max-width: 200px;
+  width: fit-content;
+  padding: 7px 20px;
+  margin: 10px 0;
+  height: auto;
+  cursor: pointer;
+  // background-color: $white;
+  // color: $dark;
+
+  background-color: $lighter;
+  color: $white;
+  border: 3px solid $dark;
+  transition: background-color 0.25s, color 0.25s;
+  border-radius: 20px;
+
+  &.active:hover {
+    // background-color: $darker;
+    // color: $white;
+    background-color: $white;
+    color: $lighter;
+  }
+}
+
+fieldset {
+  border: none;
+}
+
 .cell {
-  $pixel: 10px;
-  min-width: $pixel;
-  max-width: $pixel;
-  min-height: $pixel;
-  max-height: $pixel;
+  // $pixel: 10px;
+  // min-width: $pixel;
+  // max-width: $pixel;
+  // min-height: $pixel;
+  // max-height: $pixel;
   overflow: hidden;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  //   border: 1px solid purple;
+  border: 1px solid black;
+}
+
+form {
+  display: flex;
+  // flex-direction: column;
+  flex-wrap: wrap;
+  // width: fit-content;
+  // width: 100%;
+  justify-content: space-between;
+
+  div {
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  label {
+    font-size: 2rem;
+    margin-right: 10px;
+  }
+
+  input {
+    margin: 10px 0;
+    width: 75px;
+    font-size: 2rem;
+    text-align: center;
+    color: $dark;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+
+  button {
+    // margin: 10px auto;
+  }
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

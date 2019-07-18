@@ -1,8 +1,8 @@
 export default (rows, columns, seed) => {
   const grid = [];
-  for (let i = 0; i < columns; i++) {
+  for (let i = 0; i < rows; i++) {
     const row = [];
-    for (let j = 0; j < rows; j++) {
+    for (let j = 0; j < columns; j++) {
       if (seed) row.push(Math.random() > 0.8);
       else row.push(false);
     }
