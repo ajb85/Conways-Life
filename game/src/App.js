@@ -119,7 +119,53 @@ function App() {
             ))}
           </div>
         ))}
-        {/* <p>Generation: {state.generation}</p> */}
+        <p>Generation: {state.generation}</p>
+        <p>
+          The Rules (from{" "}
+          <a
+            href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Wikipedia
+          </a>
+          ):
+        </p>
+        <ul>
+          <li>
+            Any live cell with fewer than two live neighbours dies, as if by
+            underpopulation.
+          </li>
+          <li>
+            Any live cell with two or three live neighbours lives on to the next
+            generation.
+          </li>
+          <li>
+            Any live cell with more than three live neighbours dies, as if by
+            overpopulation.
+          </li>
+          <li>
+            Any dead cell with three live neighbours becomes a live cell, as if
+            by reproduction.
+          </li>
+        </ul>
+        <p>The history of the simulation:</p>
+        <p>
+          In late 1940, John von Neumann defined life as a creation (as a being
+          or organism) which can reproduce itself and simulate a Turing machine.
+          Von Neumann was thinking about an engineering solution which would use
+          electromagnetic components floating randomly in liquid or gas.[2] This
+          turned out not to be realistic with the technology available at the
+          time. Stanislaw Ulam invented cellular automata, which were intended
+          to simulate von Neumann's theoretical electromagnetic constructions.
+          Ulam discussed using computers to simulate his cellular automata in a
+          two-dimensional lattice in several papers. In parallel, Von Neumann
+          attempted to construct Ulam's cellular automaton. Although successful,
+          he was busy with other projects and left some details unfinished. His
+          construction was complicated because it tried to simulate his own
+          engineering design. Over time, simpler life constructions were
+          provided by other researchers, and published in papers and books.
+        </p>
       </div>
     </div>
   );
