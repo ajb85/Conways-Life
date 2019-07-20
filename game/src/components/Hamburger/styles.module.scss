@@ -1,0 +1,9 @@
+$white: rgb(243, 234, 234);
+.hamburger {
+  div {
+    width: 35px;
+    height: 5px;
+    background-color: $white;
+    margin: 6px 0;
+  }
+}
